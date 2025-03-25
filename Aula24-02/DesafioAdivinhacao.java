@@ -23,8 +23,6 @@ public class DesafioAdivinhacao {
     	} else {
     		System.out.println("Voçê errou!");
     	}
-    	
-    	
     }
 	
 	public static void main(String[] args) {
@@ -40,5 +38,4 @@ public class DesafioAdivinhacao {
 		
 		jogo.adivinhar(numero);
 	}
-
 }
