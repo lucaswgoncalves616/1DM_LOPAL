@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 
 public class ArrayExercicio02 {
@@ -8,13 +7,14 @@ public class ArrayExercicio02 {
         int[] numeros = new int[10];
         int total = 0;
 
+        System.out.print("Números gerados: ");
         for(int i = 0; i < numeros.length; i++){
             numeros[i] = rand.nextInt(0, 100);
+            System.out.print(numeros[i] + " ");
             total += numeros[i];
         }
 
-        System.out.println(Arrays.toString(numeros));
-        System.out.println(total);
+        System.out.println("\nSoma total: " + total);
 
     }
 }
