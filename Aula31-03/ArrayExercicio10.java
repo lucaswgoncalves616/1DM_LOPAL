@@ -5,7 +5,7 @@ public class ArrayExercicio10 {
         Random rand = new Random();
 
         double[] notas = new double[6];
-        double media = 0;
+        double media;
         double soma = 0;
 
         for(int i = 0; i < notas.length; i++) {
