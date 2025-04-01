@@ -1,6 +1,17 @@
+import java.util.Scanner;
+
 public class ArrayExercicio03 {
     public static void main(String[] args) {
-        int[] numeros = {5,3,9,1,7,8,4,2};
+        Scanner sc = new Scanner(System.in);
+
+        // int[] numeros = {5,3,9,1,7,8,4,2};
+        int[] numeros = new int[8];
+
+        System.out.println("Digite oito numeros: ");
+        for (int i = 0; i < 8; i++) {
+            numeros[i] = sc.nextInt();
+        }
+
         int maior = 0;
         int menor = 10;
 
