@@ -43,6 +43,9 @@ public class SalarioFuncionario {
     public double calcIr(double salarioBruto) {
         double ir;
 
+        // Calcula quanto de dedução terá se houver dependentes
+        salarioBruto = salarioBruto - (189.59 * dependentes);
+
         if (salarioBruto < 1903.99) {
             return 0;
         } else if (salarioBruto < 2826.66) {
@@ -53,13 +56,6 @@ public class SalarioFuncionario {
             ir = (salarioBruto * 22.5) / 100;
         } else {
             ir = (salarioBruto * 27.5) / 100;
-        }
-
-        // Calcula quanto de dedução terá se houver dependentes
-        if (dependentes < 0) {
-            return ir;
-        } else {
-            ir = ir + (189.59 * dependentes);
         }
 
         return ir;
@@ -91,7 +87,14 @@ public class SalarioFuncionario {
 
     // Metodo que retorna o percentual de desconto
     public double percentual(double salarioBruto, double salarioLiquido) {
-        return (salarioLiquido * 100) / salarioBruto;
+        double desconto = salarioBruto - salarioLiquido;
+        desconto = (desconto * 100) / salarioBruto;
+        return desconto;
+    }
+
+    // Metodo para validação das perguntas de sim e não
+    public boolean validacao(String resposta) {
+        return resposta.equals("s") || resposta.equals("S");
     }
 
     // Metodo principal com a criação do objeto funcionario01 e entrada de dados
@@ -121,29 +124,22 @@ public class SalarioFuncionario {
         }
 
         System.out.println("Funcionário possui vale transporte? (s/n)");
-        if (sc.next().equals("s") || sc.next().equals("S")) {
-            funcionario01.valeTrans = true;
-        } else if (sc.next().equals("n") || sc.nextLine().equals("N")) {
-            funcionario01.valeTrans = false;
-        }
+        String valeTrans = sc.next();
+        funcionario01.valeTrans = funcionario01.validacao(valeTrans);
 
         System.out.println("Funcionário possui vale alimentação? (s/n)");
-        if (sc.next().equals("s") || sc.next().equals("S")) {
-            funcionario01.valeAli = true;
-        } else if (sc.next().equals("n") || sc.nextLine().equals("N")) {
-            funcionario01.valeAli = false;
-        }
+        String valeAli = sc.next();
+        funcionario01.valeAli = funcionario01.validacao(valeAli);
 
         System.out.println("Funcionário possui vale refeição? (s/n)");
-        if (sc.next().equals("s") || sc.next().equals("S")) {
-            funcionario01.valeRef = true;
-        } else if (sc.next().equals("n") || sc.nextLine().equals("N")) {
-            funcionario01.valeRef = false;
-        }
+        String valeRef = sc.next();
+        funcionario01.valeRef = funcionario01.validacao(valeRef);
 
         System.out.print("Salário líquido: ");
         System.out.println("R$ " + String.format("%.2f", funcionario01.salarioLiquido(funcionario01.salarioBruto)));
         System.out.print("Percentual de desconto: ");
-        System.out.println(funcionario01.percentual(funcionario01.salarioBruto, funcionario01.salarioLiquido(funcionario01.salarioBruto)));
+        System.out.println(String.format("%.0f" , funcionario01.percentual(funcionario01.salarioBruto, funcionario01.salarioLiquido(funcionario01.salarioBruto))) + "%");
+
+        sc.close();
     }
 }
