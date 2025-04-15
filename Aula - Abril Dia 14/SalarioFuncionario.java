@@ -23,8 +23,8 @@ public class SalarioFuncionario {
         this.valeRef = valeRef;
     }
 
-    // Metodo que retorna o valor calculado do INSS recebendo o salario bruto como parâmetro
-    public double calcInss(double salarioBruto) {
+    // Metodo que retorna o valor calculado do INSS
+    public double calcInss() {
         double inss;
 
         if (salarioBruto < 1302.01) {
@@ -39,8 +39,8 @@ public class SalarioFuncionario {
         return inss;
     }
 
-    // Metodo que retorna o valor calculado com IR levando em conta os dependentes
-    public double calcIr(double salarioBruto) {
+    // Metodo que retorna o valor calculado do IR
+    public double calcIr() {
         double ir;
 
         // Calcula quanto de dedução terá se houver dependentes
@@ -62,10 +62,10 @@ public class SalarioFuncionario {
     }
 
     // Metodo que retorna o salario liquido usando os métodos CalcIr e CalcInss
-    public double salarioLiquido(double salarioBruto) {
+    public double salarioLiquido() {
         double salarioLiquido;
 
-        salarioLiquido = salarioBruto - calcInss(salarioBruto) - calcIr(salarioBruto);
+        salarioLiquido = salarioBruto - calcInss() - calcIr();
 
         if (valeTrans) {
             salarioLiquido = salarioLiquido - (salarioBruto * 6) / 100;
@@ -115,13 +115,10 @@ public class SalarioFuncionario {
         if (funcionario01.planoSaude == 0) {
             System.out.println("Funcionário sem plano de saúde.");
         } else if (funcionario01.planoSaude != 1 && funcionario01.planoSaude != 2) {
-            while (true) {
+            do {
                 System.out.println("Valor inválido, digite novamente:");
                 funcionario01.planoSaude = sc.nextInt();
-                if (funcionario01.planoSaude == 0 || funcionario01.planoSaude == 1 || funcionario01.planoSaude == 2){
-                    break;
-                }
-            }
+            } while (funcionario01.planoSaude != 0 && funcionario01.planoSaude != 1 && funcionario01.planoSaude != 2);
         }
 
         System.out.println("Funcionário possui vale transporte? (s/n)");
@@ -136,11 +133,15 @@ public class SalarioFuncionario {
         String valeRef = sc.next();
         funcionario01.valeRef = funcionario01.validacao(valeRef);
 
-        // Mostrando os resultados no console
+        // Mostrando os resultados
+        System.out.print("Total descontado: ");
+        System.out.println("R$ " + String.format("%.2f", funcionario01.salarioBruto - funcionario01.salarioLiquido()));
+
         System.out.print("Salário líquido: ");
-        System.out.println("R$ " + String.format("%.2f", funcionario01.salarioLiquido(funcionario01.salarioBruto)));
+        System.out.println("R$ " + String.format("%.2f", funcionario01.salarioLiquido()));
+
         System.out.print("Percentual de desconto: ");
-        System.out.println(String.format("%.0f" , funcionario01.percentual(funcionario01.salarioBruto, funcionario01.salarioLiquido(funcionario01.salarioBruto))) + "%");
+        System.out.println(String.format("%.2f" , funcionario01.percentual(funcionario01.salarioBruto, funcionario01.salarioLiquido())) + "%");
 
         sc.close();
     }
