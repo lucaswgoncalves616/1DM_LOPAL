@@ -23,7 +23,7 @@ public class SalarioFuncionario {
         this.valeRef = valeRef;
     }
 
-    // Metodo que recebe o salário como parâmetro e retorna o valor do INSS calculado
+    // Metodo que retorna o valor calculado do INSS recebendo o salario bruto como parâmetro
     public double calcInss(double salarioBruto) {
         double inss;
 
@@ -39,7 +39,7 @@ public class SalarioFuncionario {
         return inss;
     }
 
-    // Metodo que recebe o salário como parâmetro e retorna o valor do IR calculado
+    // Metodo que retorna o valor calculado com IR levando em conta os dependentes
     public double calcIr(double salarioBruto) {
         double ir;
 
@@ -61,7 +61,7 @@ public class SalarioFuncionario {
         return ir;
     }
 
-    // Metodo que recebe o salario bruto como parametro e retorna o salario liquido
+    // Metodo que retorna o salario liquido usando os métodos CalcIr e CalcInss
     public double salarioLiquido(double salarioBruto) {
         double salarioLiquido;
 
@@ -109,6 +109,7 @@ public class SalarioFuncionario {
         System.out.println("Digite a quantidade de dependentes:");
         funcionario01.dependentes = sc.nextInt();
 
+        // Validação caso o usuário digite algum número que não seja 0, 1 ou 2
         System.out.println("Plano de saúde básico digite 1 ou 2 para avançado, se não houver, digite 0:");
         funcionario01.planoSaude = sc.nextInt();
         if (funcionario01.planoSaude == 0) {
@@ -135,6 +136,7 @@ public class SalarioFuncionario {
         String valeRef = sc.next();
         funcionario01.valeRef = funcionario01.validacao(valeRef);
 
+        // Mostrando os resultados no console
         System.out.print("Salário líquido: ");
         System.out.println("R$ " + String.format("%.2f", funcionario01.salarioLiquido(funcionario01.salarioBruto)));
         System.out.print("Percentual de desconto: ");
