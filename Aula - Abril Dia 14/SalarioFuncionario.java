@@ -71,15 +71,15 @@ public class SalarioFuncionario {
             salarioLiquido = salarioLiquido - (salarioBruto * 6) / 100;
         }
         if (valeAli) {
-            salarioLiquido = salarioLiquido - 200;
+            salarioLiquido -= 200;
         }
         if (valeRef) {
-            salarioLiquido = salarioLiquido - 250;
+            salarioLiquido -= 250;
         }
         if (planoSaude == 1) {
-            salarioLiquido = salarioLiquido - 150;
+            salarioLiquido -= 150;
         } else if (planoSaude == 2) {
-            salarioLiquido = salarioLiquido - 300;
+            salarioLiquido -= 300;
         }
 
         return salarioLiquido;
@@ -94,7 +94,7 @@ public class SalarioFuncionario {
 
     // Metodo para validação das perguntas de sim e não
     public boolean validacao(String resposta) {
-        return resposta.equals("s") || resposta.equals("S");
+        return resposta.equals("s") || resposta.equals("S") || resposta.equals("sim") || resposta.equals("Sim");
     }
 
     // Metodo principal com a criação do objeto funcionario01 e entrada de dados
@@ -112,9 +112,7 @@ public class SalarioFuncionario {
         // Validação caso o usuário digite algum número que não seja 0, 1 ou 2
         System.out.println("Plano de saúde básico digite 1 ou 2 para avançado, se não houver, digite 0:");
         funcionario01.planoSaude = sc.nextInt();
-        if (funcionario01.planoSaude == 0) {
-            System.out.println("Funcionário sem plano de saúde.");
-        } else if (funcionario01.planoSaude != 1 && funcionario01.planoSaude != 2) {
+        if (funcionario01.planoSaude != 1 && funcionario01.planoSaude != 2 && funcionario01.planoSaude != 0) {
             do {
                 System.out.println("Valor inválido, digite novamente:");
                 funcionario01.planoSaude = sc.nextInt();
@@ -133,8 +131,10 @@ public class SalarioFuncionario {
         String valeRef = sc.next();
         funcionario01.valeRef = funcionario01.validacao(valeRef);
 
+        System.out.println("\n-----------------------------------------");
+
         // Mostrando os resultados
-        System.out.print("Total descontado: ");
+        System.out.print("\nTotal descontado: ");
         System.out.println("R$ " + String.format("%.2f", funcionario01.salarioBruto - funcionario01.salarioLiquido()));
 
         System.out.print("Salário líquido: ");
