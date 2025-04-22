@@ -28,13 +28,13 @@ public class SalarioFuncionario {
         double inss;
 
         if (salarioBruto < 1302.01) {
-            inss = (salarioBruto * 8) / 100;
+            inss = (salarioBruto * 0.08);
         } else if (salarioBruto < 2571.01) {
-            inss = (salarioBruto * 9) / 100;
+            inss = (salarioBruto * 0.09);
         } else if (salarioBruto < 3856.01) {
-            inss = (salarioBruto * 11) / 100;
+            inss = (salarioBruto * 0.11);
         } else {
-            inss = (salarioBruto * 14) / 100;
+            inss = (salarioBruto * 0.14);
         }
         return inss;
     }
@@ -49,13 +49,13 @@ public class SalarioFuncionario {
         if (salarioBruto < 1903.99) {
             return 0;
         } else if (salarioBruto < 2826.66) {
-            ir = (salarioBruto * 7.5) / 100;
+            ir = (salarioBruto * 0.075) - 169.44;
         } else if (salarioBruto < 3751.06) {
-            ir = (salarioBruto * 15) / 100;
+            ir = (salarioBruto * 0.15) - 381.44;
         } else if (salarioBruto < 4664.68) {
-            ir = (salarioBruto * 22.5) / 100;
+            ir = (salarioBruto * 0.225) - 662.77;
         } else {
-            ir = (salarioBruto * 27.5) / 100;
+            ir = (salarioBruto * 0.275) - 896;
         }
 
         return ir;
