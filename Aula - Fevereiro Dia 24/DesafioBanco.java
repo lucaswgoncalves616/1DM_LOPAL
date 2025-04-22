@@ -25,7 +25,7 @@ public class DesafioBanco {
 				System.out.println("Opção inválida, saindo do programa...");
 				break;
 			} else if (acao == 1){
-				System.out.println("Olá " + client001.getName() + " o saldo da sua conta é: R$" + String.format("%.2f", client001.getBalance()));
+				System.out.println("Olá " + client001.getName() + " o saldo da sua conta é R$ " + String.format("%.2f", client001.getBalance()));
 				System.out.println("Digite outra função ou 0 para sair: ");
 				acao = sc.nextInt();
 			} else if (acao == 2){
