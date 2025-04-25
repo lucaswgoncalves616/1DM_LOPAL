@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 public class SalarioFuncionario {
     double salarioBruto;
+    double salarioLiquido;
+    double Ir;
+    double Inss;
     int dependentes;
     int planoSaude;
     boolean valeTrans;
@@ -9,63 +12,44 @@ public class SalarioFuncionario {
     boolean valeRef;
 
     // Construtor para criar o objeto que representa o funcionário e seus dados
-    public SalarioFuncionario(double salarioBruto,
-                              int dependentes,
-                              int planoSaude,
-                              boolean valeTrans,
-                              boolean valeAli,
-                              boolean valeRef) {
-        this.salarioBruto = salarioBruto;
-        this.dependentes = dependentes;
-        this.planoSaude = planoSaude;
-        this.valeTrans = valeTrans;
-        this.valeAli = valeAli;
-        this.valeRef = valeRef;
+    public SalarioFuncionario() {
+
     }
 
     // Metodo que retorna o valor calculado do INSS
-    public double calcInss() {
-        double inss;
-
+    public void calcInss() {
         if (salarioBruto < 1302.01) {
-            inss = (salarioBruto * 0.08);
+            Inss = (salarioBruto * 0.08);
         } else if (salarioBruto < 2571.01) {
-            inss = (salarioBruto * 0.09);
+            Inss = (salarioBruto * 0.09);
         } else if (salarioBruto < 3856.01) {
-            inss = (salarioBruto * 0.11);
+            Inss = (salarioBruto * 0.11);
         } else {
-            inss = (salarioBruto * 0.14);
+            Inss = (salarioBruto * 0.14);
         }
-        return inss;
     }
 
     // Metodo que retorna o valor calculado do IR
-    public double calcIr() {
-        double ir;
-
+    public void calcIr() {
         // Calcula quanto de dedução terá se houver dependentes
         salarioBruto = salarioBruto - (189.59 * dependentes);
 
         if (salarioBruto < 1903.99) {
-            return 0;
+            Ir = 0;
         } else if (salarioBruto < 2826.66) {
-            ir = (salarioBruto * 0.075) - 169.44;
+            Ir = (salarioBruto * 0.075) - 169.44;
         } else if (salarioBruto < 3751.06) {
-            ir = (salarioBruto * 0.15) - 381.44;
+            Ir = (salarioBruto * 0.15) - 381.44;
         } else if (salarioBruto < 4664.68) {
-            ir = (salarioBruto * 0.225) - 662.77;
+            Ir = (salarioBruto * 0.225) - 662.77;
         } else {
-            ir = (salarioBruto * 0.275) - 896;
+            Ir = (salarioBruto * 0.275) - 896;
         }
-
-        return ir;
     }
 
     // Metodo que retorna o salario liquido usando os métodos CalcIr e CalcInss
-    public double salarioLiquido() {
-        double salarioLiquido;
-
-        salarioLiquido = salarioBruto - calcInss() - calcIr();
+    public void salarioLiquido() {
+        salarioLiquido = salarioBruto - Inss - Ir;
 
         if (valeTrans) {
             salarioLiquido = salarioLiquido - (salarioBruto * 6) / 100;
@@ -81,8 +65,6 @@ public class SalarioFuncionario {
         } else if (planoSaude == 2) {
             salarioLiquido -= 300;
         }
-
-        return salarioLiquido;
     }
 
     // Metodo que retorna o percentual de desconto
@@ -101,7 +83,7 @@ public class SalarioFuncionario {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        SalarioFuncionario funcionario01 = new SalarioFuncionario(0, 0, 0, false, false, false);
+        SalarioFuncionario funcionario01 = new SalarioFuncionario();
 
         System.out.println("Digite o salário bruto:");
         funcionario01.salarioBruto = sc.nextDouble();
@@ -133,15 +115,25 @@ public class SalarioFuncionario {
 
         System.out.println("\n-----------------------------------------");
 
-        // Mostrando os resultados
-        System.out.print("\nTotal descontado: ");
-        System.out.println("R$ " + String.format("%.2f", funcionario01.salarioBruto - funcionario01.salarioLiquido()));
+        funcionario01.calcInss();
+        funcionario01.calcIr();
+        funcionario01.salarioLiquido();
 
-        System.out.print("Salário líquido: ");
-        System.out.println("R$ " + String.format("%.2f", funcionario01.salarioLiquido()));
+        // Mostrando os resultados
+
+        System.out.println("\nIR: " + funcionario01.Ir);
+
+        System.out.println("INSS: " + funcionario01.Inss);
 
         System.out.print("Percentual de desconto: ");
-        System.out.println(String.format("%.2f" , funcionario01.percentual(funcionario01.salarioBruto, funcionario01.salarioLiquido())) + "%");
+        System.out.println(String.format("%.2f" , funcionario01.percentual(funcionario01.salarioBruto, funcionario01.salarioLiquido)) + "%");
+
+        System.out.print("\nTotal descontado: ");
+        System.out.println("R$ " + String.format("%.2f", funcionario01.salarioBruto - funcionario01.salarioLiquido));
+
+        System.out.print("Salário líquido: ");
+        System.out.println("R$ " + String.format("%.2f", funcionario01.salarioLiquido));
+
 
         sc.close();
     }
