@@ -32,18 +32,18 @@ public class SalarioFuncionario {
     // Metodo que retorna o valor calculado do IR
     public void calcIr() {
         // Calcula quanto de dedução terá se houver dependentes
-        salarioBruto = salarioBruto - (189.59 * dependentes);
+        double baseCalculo = salarioBruto - (189.59 * dependentes);
 
-        if (salarioBruto < 1903.99) {
+        if (baseCalculo < 1903.99) {
             Ir = 0;
-        } else if (salarioBruto < 2826.66) {
-            Ir = (salarioBruto * 0.075) - 169.44;
-        } else if (salarioBruto < 3751.06) {
-            Ir = (salarioBruto * 0.15) - 381.44;
-        } else if (salarioBruto < 4664.68) {
-            Ir = (salarioBruto * 0.225) - 662.77;
+        } else if (baseCalculo < 2826.66) {
+            Ir = (baseCalculo * 0.075) - 142.80;
+        } else if (baseCalculo < 3751.06) {
+            Ir = (baseCalculo * 0.15) - 354.80;
+        } else if (baseCalculo < 4664.68) {
+            Ir = (baseCalculo * 0.225) - 636.13;
         } else {
-            Ir = (salarioBruto * 0.275) - 896;
+            Ir = (baseCalculo * 0.275) - 869.36;
         }
     }
 
@@ -121,12 +121,9 @@ public class SalarioFuncionario {
 
         // Mostrando os resultados
 
-        System.out.println("\nIR: " + funcionario01.Ir);
+        System.out.println("\nIR: R$ " + String.format("%.2f", funcionario01.Ir));
 
-        System.out.println("INSS: " + funcionario01.Inss);
-
-        System.out.print("Percentual de desconto: ");
-        System.out.println(String.format("%.2f" , funcionario01.percentual(funcionario01.salarioBruto, funcionario01.salarioLiquido)) + "%");
+        System.out.println("INSS: R$ " + String.format("%.2f", funcionario01.Inss));
 
         System.out.print("\nTotal descontado: ");
         System.out.println("R$ " + String.format("%.2f", funcionario01.salarioBruto - funcionario01.salarioLiquido));
@@ -134,6 +131,8 @@ public class SalarioFuncionario {
         System.out.print("Salário líquido: ");
         System.out.println("R$ " + String.format("%.2f", funcionario01.salarioLiquido));
 
+        System.out.print("\nPercentual de desconto: ");
+        System.out.println(String.format("%.2f" , funcionario01.percentual(funcionario01.salarioBruto, funcionario01.salarioLiquido)) + "%");
 
         sc.close();
     }
