@@ -4,24 +4,24 @@ public class Exercicio02 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int[] notas = new int[4];
-        int media = 0;
+        double[] notas = new double[4];
+        double media = 0;
 
         System.out.println("Digite a nota dos 4 alunos: ");
 
         for (int i = 0; i < notas.length; i++) {
             System.out.println("Digite a nota do aluno " + (i+1) + ": ");
-            notas[i] = sc.nextInt();
+            notas[i] = sc.nextDouble();
             media += notas[i];
         }
 
         media = media / notas.length;
 
         System.out.println("Notas armazenadas: ");
-        for (int nota : notas) {
+        for (double nota : notas) {
             System.out.print(nota + " ");
         }
 
-        System.out.println("\nTotal: " + media);
+        System.out.println("\nTotal: " + String.format("%.1f", media));
     }
 }
