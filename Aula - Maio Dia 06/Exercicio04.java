@@ -11,7 +11,7 @@ public class Exercicio04 {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 matriz[i][j] = rand.nextInt(100);
-                System.out.print(matriz[i][j] + " ");
+                System.out.print(matriz[i][j] + "\t");
             }
             System.out.println(" ");
         }
@@ -21,9 +21,13 @@ public class Exercicio04 {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 if (i == j) {
-                    System.out.print(matriz[i][j] + " ");
+                    System.out.println(matriz[i][j]);
                 }
             }
         }
+
+        System.out.println("\n" + matriz[0][0]);
+        System.out.println("\t" + matriz[1][1]);
+        System.out.println("\t\t" + matriz[2][2]);
     }
 }
