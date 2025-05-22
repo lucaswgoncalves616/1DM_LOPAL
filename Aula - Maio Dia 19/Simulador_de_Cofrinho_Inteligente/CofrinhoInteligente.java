@@ -15,6 +15,7 @@ public class CofrinhoInteligente {
         return moeda * quantidade;
     }
 
+    // Verificar o tipo de moeda que o usuário colocou
     public static double entradaMoeda() {
         Scanner sc = new Scanner(System.in);
         int opcao;
@@ -62,6 +63,7 @@ public class CofrinhoInteligente {
         return moeda;
     }
 
+    // Entrada da quantidade de moedas
     public static double entradaQuantidade() {
         Scanner sc = new Scanner(System.in);
         double quantidade;
@@ -79,6 +81,7 @@ public class CofrinhoInteligente {
         return quantidade;
     }
 
+    // Calcula quantas moedas faltam caso o valor colocado não chegou a 100
     public static String paraCem(double total) {
         if (total > 100) {
             return "Parabéns! Voce ultrapassou a meta de R$ 100,00 por " + formatarReal(total - 100);
@@ -89,6 +92,7 @@ public class CofrinhoInteligente {
         }
     }
 
+    // Calcular quantas semanas falta para chegar em 100
     public static String semanasParaCem(double total) {
         if (total < 100) {
             return "Com esse mesmo depósito, levaria aproximadamente\n" + String.format("%.1f", 100 / total) + "" +
