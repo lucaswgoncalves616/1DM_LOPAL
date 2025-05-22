@@ -35,26 +35,15 @@ public class CofrinhoInteligente {
             opcao = sc.nextInt();
             System.out.print("\n");
             if (opcao >= 1 && opcao < 7) {
-                switch (opcao) {
-                    case 1:
-                        moeda = 0.01;
-                        break;
-                    case 2:
-                        moeda = 0.05;
-                        break;
-                    case 3:
-                        moeda = 0.10;
-                        break;
-                    case 4:
-                        moeda = 0.25;
-                        break;
-                    case 5:
-                        moeda = 0.50;
-                        break;
-                    case 6:
-                        moeda = 1;
-                        break;
-                }
+                moeda = switch (opcao) {
+                    case 1 -> 0.01;
+                    case 2 -> 0.05;
+                    case 3 -> 0.10;
+                    case 4 -> 0.25;
+                    case 5 -> 0.50;
+                    case 6 -> 1;
+                    default -> moeda;
+                };
                 break;
             } else {
                 System.out.print("Opção inválida!\nDigite novamente: ");
@@ -102,10 +91,12 @@ public class CofrinhoInteligente {
         }
     }
 
+    // Formatar o valor para mostrar com duas casas decimais e R$
     public static String formatarReal(double valor) {
         return "R$ " + String.format("%.2f", valor);
     }
 
+    // Parte principal
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double moeda;
@@ -118,6 +109,7 @@ public class CofrinhoInteligente {
         quantidade = CofrinhoInteligente.entradaQuantidade();
         total = CofrinhoInteligente.calcularMoeda(moeda, quantidade);
 
+        // Lógica para repetir a entrada de dados caso necessário
         do {
             System.out.println("Deseja adicionar mais moedas? (s/n)");
             opcao = sc.nextLine();
