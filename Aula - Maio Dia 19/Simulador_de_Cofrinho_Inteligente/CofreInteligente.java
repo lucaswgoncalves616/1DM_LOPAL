@@ -10,7 +10,7 @@ import java.util.Scanner;
     Extra: Mostre quanto tempo levaria para juntar R$ 100 se ele repetir o mesmo depósito a cada semana.
  */
 
-public class CofrinhoInteligente {
+public class CofreInteligente {
     public static double calcularMoeda(double moeda, double quantidade) {
         return moeda * quantidade;
     }
@@ -84,7 +84,7 @@ public class CofrinhoInteligente {
     // Calcular quantas semanas falta para chegar em 100
     public static String semanasParaCem(double total) {
         if (total < 100) {
-            return "Com esse mesmo depósito, levaria aproximadamente\n" + String.format("%.1f", 100 / total) + "" +
+            return "Com esse mesmo depósito, levaria aproximadamente\n" + String.format("%.1f", 100 / total) +
                     " semanas para chegar em RS 100,00";
         } else {
             return "Meta atingida";
@@ -105,18 +105,18 @@ public class CofrinhoInteligente {
         String opcao;
 
         System.out.println("Vamos calcular o valor do cofrinho:");
-        moeda = CofrinhoInteligente.entradaMoeda();
-        quantidade = CofrinhoInteligente.entradaQuantidade();
-        total = CofrinhoInteligente.calcularMoeda(moeda, quantidade);
+        moeda = entradaMoeda();
+        quantidade = entradaQuantidade();
+        total = calcularMoeda(moeda, quantidade);
 
         // Lógica para repetir a entrada de dados caso necessário
         do {
             System.out.println("Deseja adicionar mais moedas? (s/n)");
             opcao = sc.nextLine();
             if (opcao.equals("s") || opcao.equals("S") || opcao.equals("sim") || opcao.equals("Sim") || opcao.equals("SIM")) {
-                moeda = CofrinhoInteligente.entradaMoeda();
-                quantidade = CofrinhoInteligente.entradaQuantidade();
-                total += CofrinhoInteligente.calcularMoeda(moeda, quantidade);
+                moeda = entradaMoeda();
+                quantidade = entradaQuantidade();
+                total += calcularMoeda(moeda, quantidade);
             } else {
                 break;
             }
