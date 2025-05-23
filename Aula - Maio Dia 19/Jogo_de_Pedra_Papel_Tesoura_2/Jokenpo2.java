@@ -3,6 +3,12 @@ package Jogo_de_Pedra_Papel_Tesoura_2;
 import java.util.Random;
 import java.util.Scanner;
 
+/*
+    Jogo de Pedra, Papel, Tesoura, Lagarto e Spock
+    Descrição: Implemente a versão estendida do jogo, jogando contra o computador.
+    Utilize estrutura de decisão para determinar o vencedor.
+* */
+
 public class Jokenpo2 {
     public static int recebeJogada() {
         Scanner sc = new Scanner(System.in);
