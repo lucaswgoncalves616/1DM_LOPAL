@@ -16,7 +16,6 @@ public class RankearHeroi {
     public static ArrayList adicionarHeroi() {
         Scanner sc = new Scanner(System.in);
         ArrayList<Object> heroi = new ArrayList<>();
-        int forca;
 
         System.out.println("\nVamos adicionar um novo herói.");
 
@@ -27,19 +26,23 @@ public class RankearHeroi {
         heroi.add(validarPoder("força"));
         heroi.add(validarPoder("inteligencia"));
         heroi.add(validarPoder("velocidade"));
+        heroi.add((int) heroi.get(1) + (int) heroi.get(2) + (int) heroi.get(3) / (heroi.size() - 1));
 
         return heroi;
     }
 
     public static String mostrarHerois(ArrayList<ArrayList<Object>> herois) {
-        String mostrarHerois = "";
+        ArrayList<ArrayList<Object>> heroisRanked = new ArrayList<>();
+        heroisRanked.add(herois.getFirst());
+
+        StringBuilder mostrarHerois = new StringBuilder();
 
         System.out.print("\nHeróis: ");
-        for (int i = 0; i < herois.size(); i++) {
-            mostrarHerois += "\nNome:" + herois.get(i).get(0) + "\tForça: " + herois.get(i).get(1) + "\tInteligencia: " + herois.get(i).get(2) + "\t\tVelocidade: " + herois.get(i).get(3);
+        for (ArrayList<Object> objects : herois) {
+            mostrarHerois.append("\nNome:").append(objects.get(0)).append("\tForça: ").append(objects.get(1)).append("\tInteligencia: ").append(objects.get(2)).append("\t\tVelocidade: ").append(objects.get(3)).append("\tTotal: ").append(objects.get(4));
         }
 
-        return mostrarHerois;
+        return mostrarHerois.toString();
     }
 
     public static int validarPoder(String tipoPoder) {
@@ -60,12 +63,31 @@ public class RankearHeroi {
     }
 
     public static void main(String[] args) {
-        ArrayList<ArrayList<Object>> herois = new ArrayList<ArrayList<Object>>();
+        Scanner sc = new Scanner(System.in);
+        ArrayList<ArrayList<Object>> herois = new ArrayList<>();
+        int opcao = 0;
 
-        herois.add(adicionarHeroi());
-        herois.add(adicionarHeroi());
+        System.out.println("Bem vindo ao cadastro de heróis!");
+        System.out.println("Vamos adicionar heróis: ");
         herois.add(adicionarHeroi());
 
-        System.out.println(mostrarHerois(herois));
+        do {
+            System.out.println("\nDigite o numero da opção desejada: ");
+            System.out.println("""
+                    1. Mostrar heróis existentes
+                    2. Adicionar um novo herói
+                    3. Sair
+                    """);
+            opcao = sc.nextInt();
+
+            if (opcao == 1) {
+                System.out.println(mostrarHerois(herois));
+            } else if (opcao == 2) {
+                System.out.println(herois.add(adicionarHeroi()));
+            } else if (opcao == 3) {
+                break;
+            }
+        } while (true);
+
     }
 }
