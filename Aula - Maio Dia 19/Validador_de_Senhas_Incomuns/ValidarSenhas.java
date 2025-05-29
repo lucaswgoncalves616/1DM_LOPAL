@@ -59,7 +59,6 @@ public class ValidarSenhas {
                 }
             }
         }
-
         return false;
     }
 
