@@ -52,6 +52,16 @@ public class CofreInteligente {
         return moeda;
     }
 
+    // Calcular quantas semanas falta para chegar em 100
+    public static String semanasParaCem(double total) {
+        if (total < 100) {
+            return "Com esse mesmo depósito, levaria aproximadamente\n" + String.format("%.1f", 100 / total) +
+                    " semanas para chegar em RS 100,00";
+        } else {
+            return "Meta atingida";
+        }
+    }
+
     // Entrada da quantidade de moedas
     public static double entradaQuantidade() {
         Scanner sc = new Scanner(System.in);
@@ -69,7 +79,7 @@ public class CofreInteligente {
 
         return quantidade;
     }
-
+    
     // Calcula quantas moedas faltam caso o valor colocado não chegou a 100
     public static String paraCem(double total) {
         if (total > 100) {
@@ -78,16 +88,6 @@ public class CofreInteligente {
             return "Parabéns! Voce atingiu a meta de R$ 100,00";
         } else {
             return "Falta " + formatarReal(100 - total) + " para chegar em R$ 100,00";
-        }
-    }
-
-    // Calcular quantas semanas falta para chegar em 100
-    public static String semanasParaCem(double total) {
-        if (total < 100) {
-            return "Com esse mesmo depósito, levaria aproximadamente\n" + String.format("%.1f", 100 / total) +
-                    " semanas para chegar em RS 100,00";
-        } else {
-            return "Meta atingida";
         }
     }
 

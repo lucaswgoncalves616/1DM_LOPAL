@@ -1,7 +1,9 @@
 package Ranking_de_Super_Herois;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+import java.util.Comparator;
 
 /*
     Ranking de Super-Heróis
@@ -26,14 +28,17 @@ public class RankearHeroi {
         heroi.add(validarPoder("força"));
         heroi.add(validarPoder("inteligencia"));
         heroi.add(validarPoder("velocidade"));
-        heroi.add((int) heroi.get(1) + (int) heroi.get(2) + (int) heroi.get(3) / (heroi.size() - 1));
+        heroi.add(((int) heroi.get(1) + (int) heroi.get(2) + (int) heroi.get(3)) / (heroi.size() - 1));
 
         return heroi;
     }
 
     public static String mostrarHerois(ArrayList<ArrayList<Object>> herois) {
-        ArrayList<ArrayList<Object>> heroisRanked = new ArrayList<>();
-        heroisRanked.add(herois.getFirst());
+        Collections.sort(herois, (a, b) -> {
+            int totalA = (int) a.get(4);
+            int totalB = (int) b.get(4);
+            return Integer.compare(totalB, totalA); // decrescente
+        });
 
         StringBuilder mostrarHerois = new StringBuilder();
 
