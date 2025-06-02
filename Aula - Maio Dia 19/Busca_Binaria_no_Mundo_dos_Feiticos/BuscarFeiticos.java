@@ -12,10 +12,11 @@ package Busca_Binaria_no_Mundo_dos_Feiticos;
 */
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class BuscarFeiticos {
+
+    // Busca o array de feitiços e retorna a mensagem formatada
     public static String verificarFeitico(String[] feiticos, String feitico) {
         String mensagem = "";
         for (int i = 0; i < feiticos.length; i++) {
@@ -26,6 +27,7 @@ public class BuscarFeiticos {
         return mensagem;
     }
 
+    // Metodo principal com todos os feitiços para serem pesquisados
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] feiticos = {

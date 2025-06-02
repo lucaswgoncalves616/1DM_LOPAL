@@ -14,6 +14,8 @@ package Validador_de_Senhas_Incomuns;
 import java.util.Scanner;
 
 public class ValidarSenhas {
+
+    // Percorre a string usando a classe Character para verificar se é maiusculo
     public static boolean verificarMaiuscula(String senha) {
         for (int i = 0; i < senha.length(); i++) {
             if (Character.isLetter(senha.charAt(i)) && Character.isUpperCase(senha.charAt(i))){
@@ -23,6 +25,7 @@ public class ValidarSenhas {
         return false;
     }
 
+    // Percorre os principais numeros primos
     public static boolean verificarPrimo(String senha) {
         String num;
         for (int i = 0; i < senha.length(); i++) {
@@ -36,6 +39,7 @@ public class ValidarSenhas {
         return false;
     }
 
+    // Percorre as duas strings para verificar se contém algum caracter especial
     public static boolean verificarEspecial(String senha) {
         String especial = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
         for (int i = 0; i < senha.length(); i++) {
@@ -48,6 +52,7 @@ public class ValidarSenhas {
         return false;
     }
 
+    // Percorre as duas Strings comparando as vogais
     public static boolean verificaVogal(String senha) {
         String vogais = "aeiouAEIOU";
         for (int i = 1; i < senha.length(); i++) {

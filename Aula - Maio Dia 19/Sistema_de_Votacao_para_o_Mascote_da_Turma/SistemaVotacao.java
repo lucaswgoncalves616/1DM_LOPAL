@@ -18,6 +18,7 @@ public class SistemaVotacao {
         this.votos = votos;
     }
 
+    // Compara a quantidade de votos de cada candidato e mostra o vencedor junto com o percentual de cada
     public static void mostrarResultado(SistemaVotacao candidato1, SistemaVotacao candidato2, SistemaVotacao candidato3, int total) {
         System.out.println( "\nNome: " + candidato1.nome + "\tVotos: " + candidato1.votos +
                             "\nNome: " + candidato2.nome + "\tVotos: " + candidato2.votos +
@@ -39,6 +40,7 @@ public class SistemaVotacao {
         System.out.print("\t" + candidato3.nome + ": " + ((candidato3.votos * 100) / total) + "%");
     }
 
+    // Entrada de votos pelo usuario
     public static int votacao(SistemaVotacao candidato1, SistemaVotacao candidato2, SistemaVotacao candidato3) {
         Scanner sc = new Scanner(System.in);
         String opcao;

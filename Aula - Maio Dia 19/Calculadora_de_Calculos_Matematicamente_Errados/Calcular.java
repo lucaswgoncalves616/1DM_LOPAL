@@ -15,6 +15,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Calcular {
+
+    // Todas as operações matemáticas com até 1% de erro
     public static double fazerSoma(double a, double b){
         double rand = Math.random();
         double res = a + b;

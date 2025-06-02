@@ -10,6 +10,8 @@ import java.util.Scanner;
 * */
 
 public class Jokenpo2 {
+
+    // Atribui uma string da jogada dependendo da escolha do usuário
     public static int recebeJogada() {
         Scanner sc = new Scanner(System.in);
         int jogadaPlayer;
@@ -59,6 +61,7 @@ public class Jokenpo2 {
         return jogada;
     }
 
+    // Compara se oque o usuario escolheu primeiro vence ou se o computador escolheu primeiro e mostra o motivo
     public static String compara(String player, String cpu) {
         String[][] regraVitoria = {
                 {"Tesoura", "Papel", "Tesoura corta o papel!"},

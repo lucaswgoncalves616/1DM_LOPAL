@@ -13,7 +13,10 @@ package A_Ilha_dos_Codigos_Perdidos;
 
 import java.util.Scanner;
 
+
 public class DecifrarMapa {
+
+    // Metodo que recebe o codigo como parametro e retorna o codigo decifrado percorrendo a String
     public static String decifrarCodigo(String codigo) {
         StringBuilder codigoDecifrado = new StringBuilder();
         for (int i = 0; i < codigo.length(); i++) {

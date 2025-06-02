@@ -15,6 +15,8 @@ import java.util.Comparator;
 * */
 
 public class RankearHeroi {
+
+    // Adiciona novos heróis dinamicamente
     public static ArrayList adicionarHeroi() {
         Scanner sc = new Scanner(System.in);
         ArrayList<Object> heroi = new ArrayList<>();
@@ -33,6 +35,7 @@ public class RankearHeroi {
         return heroi;
     }
 
+    // Formata os herois para mostrar na tela
     public static String mostrarHerois(ArrayList<ArrayList<Object>> herois) {
         Collections.sort(herois, (a, b) -> {
             int totalA = (int) a.get(4);
@@ -50,6 +53,7 @@ public class RankearHeroi {
         return mostrarHerois.toString();
     }
 
+    // Validação para atribuir o poder ao super heroi
     public static int validarPoder(String tipoPoder) {
         Scanner sc = new Scanner(System.in);
         int poder;
